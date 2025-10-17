@@ -13,7 +13,7 @@ const cronTimer = process.env.CRON_TIMER;
 /** @type {string} */
 const baseURL = process.env.BASE_URL;
 /** @type {string|undefined} */
-const secretToken = process.env.SECRET_TOKEN;
+const cronSecret = process.env.CRON_SECRET;
 
 if (!cronTimer || !baseURL) {
   console.error("Missing required environment variables: CRON_TIMER and BASE_URL");
@@ -103,8 +103,8 @@ function createRequestHeaders() {
   };
   
   // Add secret token if provided
-  if (secretToken) {
-    headers['X-Cron-Secret'] = secretToken;
+  if (cronSecret) {
+    headers['X-Cron-Secret'] = cronSecret;
   }
   
   return headers;
